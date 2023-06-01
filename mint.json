@@ -28,20 +28,19 @@
       "url": "api-reference"
     },
     {
-      "name": "Changelog",
-      "icon": "list",
-      "url": "https://mintlify.com"
-    },
-    {
-      "name": "Community",
-      "icon": "discord",
-      "url": "https://mintlify.com/community"
+      "name": "SDKs",
+      "icon": "rectangle-terminal",
+      "url": "sdks"
     }
   ],
   "navigation": [
     {
       "group": "Home",
       "pages": ["introduction", "features"]
+    },
+    {
+      "group": "SDKs",
+      "pages": ["sdks/javascript_sdk", "sdks/react_sdk"]
     },
     {
       "group": "API Documentation",
