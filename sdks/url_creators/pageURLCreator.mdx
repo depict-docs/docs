@@ -8,6 +8,18 @@ description: 'How to use pageURLCreator'
 
 pageURLCreator is a feature that allows you to add page_urls to the category and product "displays" (data used to display something) and also enrich them with other data. If your displays don't contain a page_url (presumably the case for most new customers), adding a pageURLCreator is obligatory.
 
+
+## **Adding Extra Data to Displays**
+
+The `pageURLCreator` is not only designed to generate page URLs, but it can also be leveraged to add extra data to your product and category displays. This functionality is particularly useful when you have additional information stored in a different data source that you want to include in the display. Here's how to do it:
+
+1. **Define the additional data**: Identify the extra data you want to include in the display. This could be additional product details, metadata, or any other relevant information.
+2. **Fetch the additional data**: Fetch the additional data in an asynchronous operation within the `pageURLCreator` function. You'll use the display's product or category IDs to fetch the corresponding data.
+3. **Add the additional data to the display**: Once you have fetched the extra data, you can add it to the displays.
+
+See an example [further down](#example-3-you-want-to-enrich-the-display-with-data-from-somewhere-else)
+
+
 ### **Why PageURLCreator?**
 
 - Some customers have lots of products and lots of markets.
