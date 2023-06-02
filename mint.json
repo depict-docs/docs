@@ -31,6 +31,11 @@
       "name": "SDKs",
       "icon": "rectangle-terminal",
       "url": "sdks"
+    },
+    {
+      "name": "URL creators",
+      "icon": "rectange-terminal.svg);padding-right:calc(30px + 0.5rem);-webkit-mask:none!important;margin: -5px;background:#0b0d11;-webkit-mask-image: url(https://mintlify.b-cdn.net/v6.4.0/duotone/rectangle-terminal",
+      "url": "sdks/url_creators"
     }
   ],
   "navigation": [
@@ -40,7 +45,7 @@
     },
     {
       "group": "SDKs",
-      "pages": ["sdks/javascript_sdk", "sdks/react_sdk"]
+      "pages": ["sdks/javascript_sdk", "sdks/react_sdk", "sdks/url_creators/pageURLCreator"]
     },
     {
       "group": "API Documentation",
