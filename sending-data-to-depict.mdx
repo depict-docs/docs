@@ -1,0 +1,27 @@
+---
+title: "Sending Data to Depict"
+description: "Learn how to send different types of data to Depict."
+---
+
+The first step of integrating with Depict is sending your data to Depict for processing and analysis. Depending on your specific needs and requirements, this data may include product, customer, or transaction data. The data you send to Depict directly impacts the performance of our products. Depict uses this data to provide high-quality product recommendations, search and product listing pages.
+
+There are several ways to send your data to Depict. Choose the best method that suits your needs and capabilities based on what data you want to send and where your data lies. This page describes how to send the necessary data to Depict.
+
+## Send customer data and transaction data
+
+Depict uses customer data to gain insight into customers' behaviors and preferences and improve recommendations' accuracy and relevance. The customer data we require includes transaction data and anonymized user information. You can provide this data by giving Depict view-level access to your Google Analytics account.
+
+To do this, follow the steps described in the [Google Analytics documentation](https://support.google.com/analytics/answer/1009702?hl=en#Add&zippy=%2Cin-this-article). Grant permission to Depict's Google Analytics email address — ga@depict.ai.
+
+## Send product data
+
+The method you use to send your product data to Depict depends on where your data is stored. You can send your product data to Depict using any of the following methods:
+
+- **Direct integration to Centra**: [Centra](https://centra.com/direct-to-consumer) is a third-party content management system (CMS) that handles product information and orders. Depict offers an out-of-the-box integration with Centra for product data ingestion. Merchants integrating with Centra must provide specific attributes and access. For more information, see [Centra Data Ingestion](/data-ingestion/centra-setup-guide).
+- **Product feeds**: A product feed is a file that contains a structured list of products and the associated information. Depict uses the data in this file to compute product recommendations and display products on your website's search and product listing pages. We recommend using product feeds to send your data if you're using a CMS that we don't have an existing integration or if your product data resides in an internal product database.
+
+## Next steps
+
+- Learn about Depict's data specifications— get the complete list of Depict's required product attributes. For more information, see [Product Data Specifications](/data-ingestion/product-feed-specification).
+- Learn more about [Centra data ingestion](/data-ingestion/centra-data-ingestion)— learn how to import your product information from Centra.
+- Learn more about [Feed data ingestion](/data-ingestion/getting-started-with-feed-data-integration) — learn how to build and submit your product feed to Depict.

@@ -1,0 +1,67 @@
+---
+title: "Specifying Listing Type in the Category Page Sdk"
+---
+
+The [Category Page SDK](/category-sdk/categories-sdk-overview) has a property you can define alongside `categoryId` called `listingType`.
+
+### JavaScript SDK:
+
+When constructed, pass a `listingType` property to the `DepictCategoryProvider` (along with the `categoryId`).
+
+On subsequent navigations, update the values on the `DepictCategoryProvider` instance.
+
+```javascript JavaScript
+categoryProvider.categoryId = "t-shirts";
+categoryProvider.listingType = /* Your listing type here */
+```
+
+### React SDK:
+
+```javascript JavaScript
+<CategoryPage
+  categoryId="t-shirts"
+  productCard={ProductCard}
+  listingType={/* Your listing type here */}
+/>
+```
+
+It has two possible values:
+
+* `"category"`
+* `"collection"`
+
+<Note>
+
+📘 **Category vs. Collection**
+
+**Category**
+
+A grouping of products imported from a separate system into Depict like Centra, Shopify, etc.  
+Listed in the [Depict Portal](https://app.depict.ai) under "Categories".
+
+**Collection**
+ 
+A grouping of products assembled inside Depict.
+ 
+Listed in the [Depict Portal](https://app.depict.ai) under "Collections".
+ 
+_Note: Currently being rolled out and might not be available to your store yet. Ask your Depict contact to know for sure._
+</Note>
+
+## Listing type inference
+
+If you do not specify the listing type, it will be inferred based on a hierarchy. 
+
+The hierarchy is the following:
+
+1. Collection
+2. Category
+
+This means for a given category id e.g., `my_id`, a check will first be made to see if the _collection_ `my_id` exists; if so, those products will be returned. If not, the products for the _category_ `my_id` will be returned instead.
+
+Not relying on inference can speed up the loading of your Depict products. If possible, you should specify a listing type value. How you detect the type will be unique to your store and setup. The following are some ideas: 
+
+* Checking the URL if it differs.  
+E.g. `location.pathname.includes("/collection/") ? "collection" : "category"`
+* Using a value from your CMS.  
+E.g. `cmsData.isDepictCategory ? "category" : "collection"`

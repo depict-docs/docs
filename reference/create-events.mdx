@@ -1,0 +1,16 @@
+---
+openapi: "POST /create-events"
+description: " "
+---
+There are 5 types of events:
+
+- page_view
+- click
+- add_to_cart
+- purchase
+- element_visible
+
+For most integrations, we recommend sending `add_to_cart` events. Note that most of the event fields are not mandatory. See more details about each event field below.
+
+For events of type `click` the `recommendation_id` for the clicked recommendation (which is returned from the `/recommend` endpoint) should be set if available.
+

@@ -1,69 +1,173 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Documentation Starter Kit",
+  "name": "Depict AI Documentation",
   "logo": {
     "dark": "/logo/dark.png",
     "light": "/logo/light.png"
   },
   "favicon": "/favicon.png",
   "colors": {
-    "primary": "#0069ED",
-    "light": "#4D9CFF",
-    "dark": "#0050B4"
+    "primary": "#0E0E0E",
+    "light": "#FAFAFA",
+    "dark": "#0E0E0E"
   },
-  "topbarLinks": [
-    {
-      "name": "Documentation",
-      "url": "https://mintlify.com/docs"
-    }
-  ],
+  "modeToggle": {
+    "default": "light"
+  },
   "topbarCtaButton": {
-    "name": "Get Started",
-    "url": "https://github.com/mintlify/starter"
+    "name": "Book a Demo",
+    "url": "https://depict.ai/"
   },
-  "anchors": [
+  "tabs": [
     {
       "name": "API Reference",
-      "icon": "rectangle-terminal",
-      "url": "api-reference"
+      "url": "reference"
     },
     {
-      "name": "SDKs",
-      "icon": "rectangle-terminal",
-      "url": "sdks"
+      "name": "Blog",
+      "url": "https://depict.ai/blog"
     },
     {
-      "name": "URL creators",
-      "icon": "rectange-terminal.svg);padding-right:calc(30px + 0.5rem);-webkit-mask:none!important;margin: -5px;background:#0b0d11;-webkit-mask-image: url(https://mintlify.b-cdn.net/v6.4.0/duotone/rectangle-terminal",
-      "url": "sdks/url_creators"
+      "name": "Contact Us",
+      "url": "mailto:hello@depict.ai"
     }
   ],
   "navigation": [
     {
       "group": "Home",
-      "pages": ["introduction", "features"]
-    },
-    {
-      "group": "SDKs",
-      "pages": ["sdks/javascript_sdk", "sdks/react_sdk", "sdks/url_creators/pageURLCreator"]
-    },
-    {
-      "group": "API Documentation",
-      "pages": ["api-reference/authentication"]
-    },
-    {
-      "group": "Endpoint Examples",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/update",
-        "api-reference/endpoint/delete"
+        "home/homepage",
+        "home/sdk-intro",
+        "home/categories-intro",
+        "home/search-intro",
+        "home/recommendations-intro"
+      ]
+    },
+    {
+      "group": "Data ingestion",
+      "pages": [
+        "data-ingestion/overview-of-data-ingestion",
+        "data-ingestion/centra-setup-guide",
+        "data-ingestion/google-analytics-setup-guide",
+        "data-ingestion/product-feed-specification",
+        "data-ingestion/category-feed-specification"
+      ]
+    },
+    {
+      "group": "Search SDK",
+      "pages": [
+        "search-sdk/search-sdk-overview",
+        "search-sdk/search-sdk-api-wrapper",
+        "search-sdk/search-js-ui-quickstart",
+        {
+          "group": "React SDK",
+          "pages": [
+            "search-sdk/search-react-sdk",
+            "search-sdk/search-react-quickstart"
+          ]
+        },
+        "search-sdk/modify-and-customize-styling",
+        "search-sdk/search-sdk-styling"
+      ]
+    },
+    {
+      "group": "Category Page SDK",
+      "pages": [
+        "category-sdk/categories-sdk-overview",
+        "category-sdk/categories-sdk-api-wrapper",
+        {
+          "group": "React SDK",
+          "pages": [
+            "category-sdk/category-page-react-sdk",
+            "category-sdk/category-page-react-quickstart"
+          ]
+        },
+        "category-sdk/category-page-styling",
+        "category-sdk/specifying-listing-type-in-the-category-page-sdk"
+      ]
+    },
+    {
+      "group": "Category and Search Styling",
+      "pages": [
+        "category-search/customize-plp-styling-with-scss"
+      ]
+    },
+    {
+      "group": "Recommendations SDK",
+      "pages": [
+        "recommendations-sdk/recommendations-sdk-overview",
+        {
+          "group": "Native",
+          "pages": [
+            "recommendations-sdk/getting-started",
+            "recommendations-sdk/recommendations"
+          ]
+        },
+        "recommendations-sdk/recommendations-sdk-api-wrapper",
+        "recommendations-sdk/recommendations-sdk-js",
+        {
+          "group": "React SDK",
+          "pages": [
+            "recommendations-sdk/recommendations-sdk-react",
+            "recommendations-sdk/recommendations-sdk-react-quickstart"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Tracking Product Interactions",
+      "pages": [
+        "tracking-product/introduction-to-depict-performance-client",
+        "tracking-product/performance-client",
+        "tracking-product/example-usage-with-nextjs",
+        "tracking-product/interacting-with-depict-performance-client"
+      ]
+    },
+    {
+      "group": "Search & Category APIS",
+      "pages": [
+        "search-category-apis/search-overview",
+        "search-category-apis/category-pages",
+        "search-category-apis/query-suggestions"
+      ]
+    },
+    {
+      "group": "Depict API",
+      "pages": [
+        {
+          "group": "Search",
+          "pages":[
+            "reference/get-results-v2-search-post",
+            "reference/get-suggestions-v2-search-suggestions-get",
+            "reference/get-related-recommendations-v2-search-related-post"
+          ]
+        },
+        {
+          "group": "Product Listing", 
+          "pages": ["reference/get-products-v2-product-listing-post"]
+        },
+        {
+          "group": "Recommendations", 
+          "pages": [
+            "reference/recommend-for-user-v2-recommend-products-general-post",
+            "reference/recommend-for-product-and-user-v2",
+            "reference/recommend-for-category-and-user-v2",
+            "reference/recommend-for-products-and-user-v2"
+          ]
+        },
+        {
+          "group": "Events", 
+          "pages": [
+            "reference/create-events",
+            "reference/track-v2",
+            "reference/create-events-v2"
+          ]
+        }
       ]
     }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "website": "https://depict.ai/",
+    "linkedin": "https://www.linkedin.com/company/depict-ai/"
   }
 }

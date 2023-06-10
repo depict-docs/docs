@@ -1,0 +1,21 @@
+---
+openapi: "POST /v2/recommend/products/category"
+description: "Returns an object with an array of recommendation displays."
+---
+
+Each display will contain a recommendation_id (which is also present as a URL parameter in `display.page_url`). The recommendation_id should be sent to the `create-events` endpoint if the user interacts with the recommendation. This is typically achieved by storing the recommendation as a data attribute on the HTML element containing the recommendation.
+
+<ResponseExample>
+```json Example response:
+{
+    "displays": [{
+        "title": "Mechanical Keyboard",
+        "price": "100.00",
+        "image_url": "https://my_store.com/awesome_mechanical_keyboard.jpeg",
+        "page_url": "https://my_store.com/awesome_mechanical_keyboard.html",
+        "product_id": "awesome_mechanical_keyboard",
+        "recommendation_id": "827ada29-92e7-4642-8805-8b7105a9c8a5"
+    }]
+}
+```
+</ResponseExample>

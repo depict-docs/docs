@@ -1,0 +1,83 @@
+---
+openapi: "POST /v2/search/results"
+description: "Used to get search results that match the given query. Has support for filtering and sorting."
+---
+
+<ResponseExample>
+```json Example response
+{
+   "n_hits": 1,
+   "displays": [
+     {
+         "product_id": "foobar",
+         "title": "Foobar"
+     }
+   ],
+   "sorts": [
+     {
+       "field": "_relevance",
+       "order": "desc",
+       "meta": {
+         "title": "Relevance",
+         "values": [
+           "desc"
+         ],
+         "names": [
+           "Relevance"
+         ]
+       }
+     },
+     {
+       "field": "title",
+       "order": "asc",
+       "meta": {
+         "title": "Title",
+         "values": [
+           "asc",
+           "desc"
+         ],
+         "names": [
+           "A-Z",
+           "Z-A"
+         ]
+       }
+     }
+   ],
+   "filters": [
+     {
+       "field": "sale_price",
+       "op": "inrange",
+       "data": [
+         0,
+         2500
+       ],
+       "meta": {
+         "group_title": "Price",
+         "type": "range",
+         "min": 0,
+         "max": 2500,
+         "currency": "EUR"
+       },
+       "id": "price0"
+     },
+     {
+       "field": "color_name",
+       "op": "in",
+       "meta": {
+         "group_title": "Color",
+         "type": "checkbox",
+         "values": [
+           "Blue",
+           "Black",
+           "Brown"
+         ]
+       },
+       "id": "colors1"
+     }
+   ],
+   "search_request_id": "1a278f4a-16eb-4d95-a002-88bd305493d4",
+   "cursor": "eyJjIjogMSwgInIiOiAwfQ=="
+ }
+ ```
+ 
+ </ResponseExample>
