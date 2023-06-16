@@ -1,0 +1,69 @@
+---
+title: "Overview"
+description: "An overview of the search components and flow"
+---
+
+## There's two main parts to adding Depict UI Search to your site:
+
+1. Adding a search field or button to your site
+2. Adding a search results page to your site
+
+## This will result in the following flow for the user:
+
+<b>1. The user clicks on the search button or search field.</b>
+
+<CardGroup cols={2}>
+    <Frame caption="SearchField">
+        <img src="/images/search_field.svg" />
+    </Frame>
+    <Frame caption="A search button">
+        <img src="/images/search_button.svg" />
+    </Frame>
+</CardGroup>
+<span style={{"font-size": "2em"}}>👇</span>
+<b>2. The search modal opens</b>
+<Frame caption="The SearchModal that the user sees while typing a query">
+    <img src="/images/search_modal.svg" />
+</Frame>
+The SearchModal can either align to the SearchField that was used to open it, an arbitrary element, or the center of the screen.
+
+<span style={{"font-size": "2em"}}>👇</span>
+<b>3. The user submits a query and goes to a new URL like /search</b>
+<Frame caption="The SearchPage which displays the results along with sorting options, filters and search recommendations">
+    <img src="/images/search_page.svg" ref={async element => {
+        // Fix background color in dark mode while still having cool, transparent light mode background
+        if(!element) return;
+        const load_utilishared = () => {
+            const script = document.createElement("script");
+            script.type = "module";
+            script.append(`
+            import * as utilishared from "https://esm.run/@depict-ai/utilishared@latest/dist/module.js";
+            window.utilishared = utilishared;
+            window?.resolve_utilishared();
+            `)
+            document.head.append(script);
+        }
+
+        if(!window.utilishared) {
+            await new Promise(resolve => {
+                window.resolve_utilishared = resolve;
+                load_utilishared();
+            })
+        }
+
+        const { style } = element;
+        const update_styling = () => {
+            const dark = document.documentElement.classList.contains("dark");
+            style.background = dark ? "white" : "";
+            style.padding = dark ? "10px" : "";
+            style.borderRadius = dark ? "0.75rem" : "";
+        };
+        const m_o = new MutationObserver(utilishared.catchify(update_styling));
+        m_o.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ["class"]
+        })
+        update_styling();
+        utilishared.observer.onremoved(element, () => m_o.disconnect());
+    }} />
+</Frame>

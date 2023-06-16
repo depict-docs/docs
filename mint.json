@@ -15,152 +15,240 @@
     "default": "light"
   },
   "topbarCtaButton": {
-    "name": "Book a Demo",
-    "url": "https://depict.ai/"
+    "name": "Contact us",
+    "url": "mailto:hello@depict.ai"
   },
   "tabs": [
     {
-      "name": "API Reference",
+      "name": "Guide: Data ingestion",
+      "url": "data-ingestion-guide"
+    },
+    {
+      "name": "Guide: Depict UI integration (React)",
+      "url": "react-ui-guide"
+    },
+    {
+      "name": "Guide: API integration",
+      "url": "api-guide"
+    },
+    {
+      "name": "Reference",
       "url": "reference"
-    },
-    {
-      "name": "Blog",
-      "url": "https://depict.ai/blog"
-    },
-    {
-      "name": "Contact Us",
-      "url": "mailto:hello@depict.ai"
     }
   ],
+  "primaryTab": {
+    "name": "Home"
+  },
   "navigation": [
     {
       "group": "Home",
       "pages": [
         "home/homepage",
-        "home/sdk-intro",
+        "home/depict-ui-intro",
         "home/categories-intro",
         "home/search-intro",
         "home/recommendations-intro"
       ]
     },
     {
+      "group": "Overview",
+      "pages": [
+        "react-ui-guide/introduction",
+        "react-ui-guide/data-ingestion",
+        "react-ui-guide/compatible-environments"
+      ]
+    },
+    {
+      "group": "Setup",
+      "pages": [
+        "react-ui-guide/setup/installation",
+        "react-ui-guide/setup/depict-provider",
+        "react-ui-guide/setup/pageURLCreator",
+        "react-ui-guide/setup/styling",
+        "react-ui-guide/setup/product-card"
+      ]
+    },
+    {
+      "group": "Search",
+      "pages": [
+        "react-ui-guide/search/overview",
+        "react-ui-guide/search/modal",
+        "react-ui-guide/search/routing",
+        "react-ui-guide/search/configuring-provider",
+        "react-ui-guide/search/page",
+        "react-ui-guide/search/complete"
+      ]
+    },
+    {
+      "group": "Categories & Collections",
+      "pages": [
+        "react-ui-guide/categories-collections/overview",
+        "react-ui-guide/categories-collections/page",
+        "react-ui-guide/categories-collections/complete"
+      ]
+    },
+    {
+      "group": "Tracking",
+      "pages": [
+        "react-ui-guide/tracking/introduction",
+        "react-ui-guide/tracking/product-cards",
+        "react-ui-guide/tracking/product-pages",
+        "react-ui-guide/tracking/add-to-cart",
+        "react-ui-guide/tracking/purchases",
+        "react-ui-guide/tracking/completed"
+      ]
+    },
+    {
+      "group": "Overview",
+      "pages": [
+        "api-guide/introduction",
+        "api-guide/data-ingestion"
+      ]
+    },
+    {
+      "group": "Recommendations",
+      "pages": [
+        "api-guide/recommendations/introduction",
+        {
+          "group": "JavaScript API Client",
+          "pages": [
+            "api-guide/recommendations/api-client/installing",
+            "api-guide/recommendations/api-client/importing",
+            "api-guide/recommendations/api-client/fetching",
+            "api-guide/recommendations/api-client/completed"
+          ]
+        },
+        "api-guide/recommendations/api"
+      ]
+    },
+    {
+      "group": "Search",
+      "pages": [
+        "api-guide/search"
+      ]
+    },
+    {
+      "group": "Categories & Collections",
+      "pages": [
+        "api-guide/categories-collections"
+      ]
+    },
+    {
+      "group": "Tracking",
+      "pages": [
+        "api-guide/tracking/introduction",
+        "api-guide/tracking/installation",
+        "api-guide/tracking/importing",
+        "api-guide/tracking/initialising",
+        "api-guide/tracking/product-cards",
+        "api-guide/tracking/product-pages",
+        "api-guide/tracking/add-to-cart",
+        "api-guide/tracking/purchases",
+        "api-guide/tracking/completed"
+      ]
+    },
+    {
       "group": "Data ingestion",
       "pages": [
-        "data-ingestion/overview-of-data-ingestion",
-        "data-ingestion/centra-setup-guide",
-        "data-ingestion/google-analytics-setup-guide",
-        "data-ingestion/product-feed-specification",
-        "data-ingestion/category-feed-specification"
+        "reference/data-ingestion/product-feed-specification",
+        "reference/data-ingestion/category-feed-specification"
+      ]
+    },
+    {
+      "group": "Data ingestion",
+      "pages": [
+        "data-ingestion-guide/overview-of-data-ingestion",
+        "data-ingestion-guide/centra-setup-guide",
+        "data-ingestion-guide/google-analytics-setup-guide"
       ]
     },
     {
       "group": "Search SDK",
       "pages": [
-        "search-sdk/search-sdk-overview",
-        "search-sdk/search-sdk-api-wrapper",
-        "search-sdk/search-js-ui-quickstart",
-        {
-          "group": "React SDK",
-          "pages": [
-            "search-sdk/search-react-sdk",
-            "search-sdk/search-react-quickstart"
-          ]
-        },
-        "search-sdk/modify-and-customize-styling",
-        "search-sdk/search-sdk-styling"
+        "reference/search-sdk/search-sdk-overview",
+        "reference/search-sdk/search-js-ui-quickstart",
+        "reference/search-sdk/search-react-sdk"
       ]
     },
     {
       "group": "Category Page SDK",
       "pages": [
-        "category-sdk/categories-sdk-overview",
-        "category-sdk/categories-sdk-api-wrapper",
-        {
-          "group": "React SDK",
-          "pages": [
-            "category-sdk/category-page-react-sdk",
-            "category-sdk/category-page-react-quickstart"
-          ]
-        },
-        "category-sdk/category-page-styling",
-        "category-sdk/specifying-listing-type-in-the-category-page-sdk"
+        "reference/category-sdk/categories-sdk-overview",
+        "reference/category-sdk/category-page-react-sdk",
+        "reference/category-sdk/specifying-listing-type-in-the-category-page-sdk"
       ]
     },
     {
-      "group": "Category and Search Styling",
+      "group": "Category, Collections and Search",
       "pages": [
-        "category-search/customize-plp-styling-with-scss"
+        "reference/category-search/placeholder-components",
+        "reference/category-search/customize-plp-styling-with-scss",
+        "reference/category-search/url-creator",
+        "reference/category-search/error-reporting"
       ]
     },
     {
       "group": "Recommendations SDK",
       "pages": [
-        "recommendations-sdk/recommendations-sdk-overview",
+        "reference/recommendations-sdk/recommendations-sdk-overview",
         {
           "group": "Native",
           "pages": [
-            "recommendations-sdk/getting-started",
-            "recommendations-sdk/recommendations"
+            "reference/recommendations-sdk/getting-started",
+            "reference/recommendations-sdk/recommendations"
           ]
         },
-        "recommendations-sdk/recommendations-sdk-api-wrapper",
-        "recommendations-sdk/recommendations-sdk-js",
-        {
-          "group": "React SDK",
-          "pages": [
-            "recommendations-sdk/recommendations-sdk-react",
-            "recommendations-sdk/recommendations-sdk-react-quickstart"
-          ]
-        }
+        "reference/recommendations-sdk/recommendations-sdk-api-wrapper",
+        "reference/recommendations-sdk/recommendations-sdk-js"
       ]
     },
     {
       "group": "Tracking Product Interactions",
       "pages": [
-        "tracking-product/introduction-to-depict-performance-client",
-        "tracking-product/performance-client",
-        "tracking-product/example-usage-with-nextjs",
-        "tracking-product/interacting-with-depict-performance-client"
+        "reference/performance-client/introduction-to-depict-performance-client",
+        "reference/performance-client/performance-client",
+        "reference/performance-client/example-usage-with-nextjs",
+        "reference/performance-client/interacting-with-depict-performance-client"
       ]
     },
     {
-      "group": "Search & Category APIS",
+      "group": "HTTP API",
       "pages": [
-        "search-category-apis/search-overview",
-        "search-category-apis/category-pages",
-        "search-category-apis/query-suggestions"
-      ]
-    },
-    {
-      "group": "Depict API",
-      "pages": [
+        "reference/search-category-apis/search-overview",
+        "reference/search-category-apis/category-pages",
+        "reference/search-category-apis/query-suggestions",
         {
-          "group": "Search",
-          "pages":[
-            "reference/get-results-v2-search-post",
-            "reference/get-suggestions-v2-search-suggestions-get",
-            "reference/get-related-recommendations-v2-search-related-post"
-          ]
-        },
-        {
-          "group": "Product Listing", 
-          "pages": ["reference/get-products-v2-product-listing-post"]
-        },
-        {
-          "group": "Recommendations", 
+          "group": "Endpoints",
           "pages": [
-            "reference/recommend-for-user-v2-recommend-products-general-post",
-            "reference/recommend-for-product-and-user-v2",
-            "reference/recommend-for-category-and-user-v2",
-            "reference/recommend-for-products-and-user-v2"
-          ]
-        },
-        {
-          "group": "Events", 
-          "pages": [
-            "reference/create-events",
-            "reference/track-v2",
-            "reference/create-events-v2"
+            {
+              "group": "Search",
+              "pages":[
+                "reference/openapi-reference/get-results-v2-search-post",
+                "reference/openapi-reference/get-suggestions-v2-search-suggestions-get",
+                "reference/openapi-reference/get-related-recommendations-v2-search-related-post"
+              ]
+            },
+            {
+              "group": "Product Listing",
+              "pages": ["reference/openapi-reference/get-products-v2-product-listing-post"]
+            },
+            {
+              "group": "Recommendations",
+              "pages": [
+                "reference/openapi-reference/recommend-for-user-v2-recommend-products-general-post",
+                "reference/openapi-reference/recommend-for-product-and-user-v2",
+                "reference/openapi-reference/recommend-for-category-and-user-v2",
+                "reference/openapi-reference/recommend-for-products-and-user-v2"
+              ]
+            },
+            {
+              "group": "Events",
+              "pages": [
+                "reference/openapi-reference/create-events",
+                "reference/openapi-reference/track-v2",
+                "reference/openapi-reference/create-events-v2"
+              ]
+            }
           ]
         }
       ]

@@ -1,0 +1,21 @@
+---
+title: "Product Page Tracking"
+description: "How to make sure DPC tracks your Product Details Page (PDP) views correctly."
+---
+
+Every time after navigating to a page representing a product on your website, you need to send a `setProductId` event to register which product id is currently viewed.
+
+<CodeGroup>
+
+```typescript dpq
+dpq("setProductId", "[PRODUCT_ID_FOR_CURRENT_PDP]");
+```
+
+```typescript DPC instance
+dpc.setProductId("[PRODUCT_ID_FOR_CURRENT_PDP]");
+```
+</CodeGroup>
+<br />
+<Note>
+For attribution of purchases to work properly, the Product ID used in `setProductId` and `addToCart` events must be the same type of id that is returned in the displays by our API as `product_id`. Which ID to use will be clarified when we start ingesting your product catalog and computing product discovery results.
+</Note>

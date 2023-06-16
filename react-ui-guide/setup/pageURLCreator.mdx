@@ -1,0 +1,51 @@
+---
+title: "Transforming and enriching product data"
+---
+
+The keen observer might notice that the displays lack one key ingredient: page urls (URL to the product page).
+
+If you correctly add the display type to the `DepictProvider`, you should also encounter a type error due to this. This happens because the Depict backend omits the page_url for performance reasons. We need to add it back in. If you need to add additional data to the product data you can also do so in this step.
+
+## Adding page urls
+
+
+Provide a `pageURLCreator` to your `DepictProvider` like in the example below:
+
+```tsx
+import { DepictProvider } from "@depict-ai/react-ui";
+import { en } from "@depict-ai/react-ui/locales";
+import { YourDisplay } from "./display-types.ts";
+
+function App() {
+  return (
+    <DepictProvider<YourDisplay>
+      merchant="MERCHANT_ID"
+      market="MARKET"
+      locale={en}
+      pageURLCreator={options => { // this function can be async
+        if (options.type === "products") {
+          // For products:
+          return options.displays.map(display => ({
+            ...display,
+            variant_displays: display.variant_displays.map(variant => ({
+              ...variant, // here you can add any extra data you want, but must add page_url
+              page_url: "/" + context.market.name + "/p/" + variant.uri, // <- Change this
+            })),
+          }));
+        }
+        // For categories:
+        return options.data.map(({ uri }) => {
+          page_url: "/" + context.market.name + "/c/" + uri; // <- Change this
+        });
+      }}
+    >
+      <div className="App">...</div>
+    </DepictProvider>
+  );
+}
+
+export default App;
+```
+
+
+<Info>For more in-depth information and examples, check out the [reference](/reference/category-search/url-creator)</Info>
