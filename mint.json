@@ -63,6 +63,7 @@
       "pages": [
         "react-ui-guide/setup/installation",
         "react-ui-guide/setup/depict-provider",
+        "react-ui-guide/setup/routing",
         "react-ui-guide/setup/pageURLCreator",
         "react-ui-guide/setup/styling",
         "react-ui-guide/setup/product-card"
@@ -73,7 +74,6 @@
       "pages": [
         "react-ui-guide/search/overview",
         "react-ui-guide/search/modal",
-        "react-ui-guide/search/routing",
         "react-ui-guide/search/configuring-provider",
         "react-ui-guide/search/page",
         "react-ui-guide/search/complete"
