@@ -3,10 +3,10 @@ title: "Setting up routing"
 ---
 
 
-You need to set up page routing to redirect users to different pages based on their search requests or when clicking on a category in the category navigation.
+After setting up the search modal, you need to set up page routing to redirect users to different pages based on their search requests.
 
 <Note>
-    The SDK supports page routing in Next.js applications without any extra configuration. If you're using next.js, [skip to the next step](/react-ui-guide/setup/pageURLCreator).
+    The SDK supports page routing in Next.js applications without any extra configuration. If you're using next.js [skip to the next step](/react-ui-guide/search/configuring-provider).
 </Note>
 
  However, React.js applications using other routing solutions must use the `navigateFunction` property on the `DepictProvider` wrapper to handle routing to search result pages as shown:
@@ -22,7 +22,10 @@ function App() {
     <DepictProvider
       merchant="MERCHANT_ID"
       market="MARKET_IDENTIFIER"
-      navigateFunction={navigate} // <-- Pass a navigate function here if not using next.js
+      navigateFunction={navigate}
+      search={{
+        searchPagePath: "/search",
+      }}
     >
       <Routes>
         <Route path="/" exact element={<Home />} />
