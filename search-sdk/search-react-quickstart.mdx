@@ -1,0 +1,229 @@
+---
+title: "Quickstart"
+description: "Learn how to integrate Depict Search UI with our React SDK."
+---
+
+Get started with Depict Search UI React SDK by installing the package and importing the components you want to use in your app. For a complete list of components and their configuration, see [React SDK components](/search-sdk/search-react-sdk#react-sdk-hooks-and-components).
+
+## Prerequisites
+
+Before proceeding, ensure you have sent your product data to Depict for processing and analysis. If you haven't already, [Sending Data to Depict](/sending-data-to-depict).
+
+## Installation
+
+The Depict UI React package is available in the NPM registry. To install:
+
+<CodeGroup>
+
+```shell NPM
+npm install @depict-ai/react-ui
+```
+
+```shell Yarn
+yarn add @depict-ai/react-ui
+```
+
+</CodeGroup>
+
+## The `DepictProvider` configuration
+
+Import the `DepictProvider` component from the installed package and use this component to wrap your entire application's component tree as shown:
+
+```tsx tsx
+import { DepictProvider } from "@depict-ai/react-ui";
+import { en } from "@depict-ai/react-ui/locales";
+
+function App() {
+  return (
+    <DepictProvider
+      merchant="MERCHANT_ID"
+      market="MARKET_IDENTIFIER"
+      search={{
+        searchPagePath: "/search",
+      }}
+      locale={en}
+    >
+      <div className="App">
+        ...
+      </div>
+    </DepictProvider>
+  );
+}
+
+export default App;
+```
+
+The `locale` property on the `DepictProvider` wrapper accepts a JavaScript object that handles UI translations and price formatting. Import any of our supported locales from the `@depict-ai/react-ui/locales` subpackage.
+
+<Note>
+📘 The `searchPagePath` value must match the route path for your application's search page component.
+</Note> 
+
+## Import styling
+
+You can make use of our default styling by importing the SDK styling into your **SCSS** file as follows:
+
+```scss SCSS
+@use "@depict-ai/react-ui" as plp-styling;
+
+@include plp-styling.default-theme("search");
+```
+
+This includes all the default styling for all Depict Search UI components. You can also customize components' styling to fit your website's specifications. For more information, see [Modify and Customize Styling](/docs/search-sdk-styling).
+
+## Add a search field or search modal
+
+Use the `useSearchField` hook to add a search field on your site. Destructure the `SearchField` component from this hook and nest the component within your application as shown:
+
+```tsx tsx
+import { useSearchField } from "@depict-ai/react-ui";
+import { useRef } from "react";
+
+function Header() {
+ const elementRef = useRef();
+   
+ const { SearchField } = useSearchField({
+   alignerRef: elementRef,
+ });
+  
+ return (
+   <header>
+     <div ref={elementRef} />
+     <SearchField /> 
+   </header>
+  );
+}
+
+export default Header;
+```
+
+> What if, instead of having a search field, the search modal is triggered when a user clicks a button?
+
+Alternatively, you can use the `useDepictSearchModal` hook to open a search modal in response to user events.
+
+```tsx tsx
+import { useSearchModal } from "@depict-ai/react-ui";
+
+const Nav = () => {
+ const { open } = useSearchModal({
+   location: "centered",
+ });
+
+  return (
+    <nav>
+      <button onClick={open}>Search</button>
+    </nav>
+  );
+};
+```
+
+By default, the `useSearchModal` hook centers the search modal to the top of the viewport. You can use the hook's `location` and `alignerRef` properties to align the modal to the top of a specific component on the DOM. To open an aligned search modal:
+
+```tsx tsx
+import { useSearchModal } from "@depict-ai/react-ui";
+import { useRef } from "react";
+
+const Nav = () => {
+  const modalAlignmentRef = useRef();
+
+  const { open } = useSearchModal({
+    location: "aligned",
+    alignerRef: modalAlignmentRef,
+  });
+
+  return (
+    <nav>
+      <div ref={modalAlignmentRef} />
+      <button onClick={open}>Search</button>
+    </nav>
+  );
+};
+```
+
+## Set up page routing
+
+After setting up the search modal, you need to set up page routing to redirect users to different pages based on their search requests. The Depict Search UI React SDK supports the following routing:
+
+* React Router.
+* Next.js' built-in router.
+
+The SDK supports page routing in Next.js applications without any extra configuration. However, React.js applications using other routing solutions must use the `navigateFunction` property on the `DepictProvider` wrapper to handle routing to search result pages as shown:
+
+```tsx tsx
+import { Routes, Route, useNavigate } from "react-router-dom";
+import { DepictProvider } from "@depict-ai/react-ui";
+
+function App() {
+  const navigate = useNavigate();
+
+  return (
+    <DepictProvider
+      merchant="MERCHANT_ID"
+      market="MARKET_IDENTIFIER"
+      navigateFunction={navigate}
+      search={{
+        searchPagePath: "/search",
+      }}
+    >
+      <Routes>
+        <Route path="/" exact element={<Home />} />
+        <Route path="/search" element={<Search />} />
+      </Routes>
+    </DepictProvider>
+  );
+}
+```
+
+<Note>
+📘 If using another routing library, you can define your navigation function compatible with React Router's [NavigateFunction](https://reactrouter.com/en/main/hooks/use-navigate#type-declaration) type. (Note: you have to support the `replace` option)
+</Note>
+
+## Set up your search results page
+
+At the moment, attempting to search the website will return no results. You must set up and configure your search results page using the `SearchPage` component to render results from the search. Import the component from the Depict UI SDK and nest it into your application's search page component.
+
+```tsx tsx
+import { SearchPage } from "@depict-ai/react-ui";
+import ProductCard from "./ProductCard";
+
+function Search() {
+  return (
+    <div>
+      <SearchPage
+        productCard={ProductCard}
+        columnsAtSize={[[1, 500], [2, 820], [3, 1000], [4]]}
+      />
+    </div>
+  );
+}
+
+export default Search;
+```
+
+The `productCard` prop accepts your custom `ProductCard` component that receives and renders the data obtained from each search. Use the `columnsAtSize` prop to handle breakpoints on your search results page. It defines the number of product card columns displayed at each screen size.
+
+To find out more about the Search UI SDK's components and hooks and their usage configurations, see [React component API](/docs/search-react-sdk#react-component-api).
+
+## Debugging and Error reporting
+
+The Depict React UI SDK monitors your application internally for error occurrence and automatically sends an event to Depict once this occurs. This reporting lets us quickly notice if something is broken in our SDK and offers insight into fixing bugs. This reporting is, however, suppressed by default on your browser. You can show these events to gain insights into the SDK's internals.
+
+To view event logs from the SDK, run the following command in your browser console:
+
+```javascript JavaScript
+localStorage.debug = true
+```
+
+Similarly, you can disable sending these error reports to Depict by setting the value of the `SENTRY` environment variable to false, as shown:
+
+<CodeGroup>
+
+```text React.js
+REACT_APP_SENTRY=false
+```
+
+```text Next.js
+NEXT_PUBLIC_SENTRY=false
+```
+
+</CodeGroup>
